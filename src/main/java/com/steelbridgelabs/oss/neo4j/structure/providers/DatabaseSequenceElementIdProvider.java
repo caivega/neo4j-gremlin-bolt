@@ -152,10 +152,10 @@ public class DatabaseSequenceElementIdProvider implements Neo4JElementIdProvider
     }
     
     @Override
-	public Long processIdentifier(Entity element, Object id) {
-		Objects.requireNonNull(element, "Element cannot be null");
-		return this.processIdentifier(element.id());
-	}
+    public Long processIdentifier(Entity element, Object id) {
+        Objects.requireNonNull(element, "Element cannot be null");
+        return this.processIdentifier(element.id());
+    }
 
     /**
      * Process the given identifier converting it to the correct type if necessary.
