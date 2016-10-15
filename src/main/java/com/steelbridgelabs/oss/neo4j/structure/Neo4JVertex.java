@@ -229,7 +229,7 @@ public class Neo4JVertex extends Neo4JElement implements Vertex {
         this.session = session;
         this.idFieldName = vertexIdProvider.idFieldName();
         // from node
-        this.id = vertexIdProvider.processIdentifier(node.get(idFieldName).asObject());
+        this.id = vertexIdProvider.processIdentifier(node, node.get(idFieldName).asObject());
         // graph labels (additional & partition labels in original node)
         this.graphLabels = StreamSupport.stream(node.labels().spliterator(), false).filter(label -> additionalLabels.contains(label) && !partition.validateLabel(label)).collect(Collectors.toSet());
         // labels, do not store additional && partition labels

@@ -18,6 +18,8 @@
 
 package com.steelbridgelabs.oss.neo4j.structure;
 
+import org.neo4j.driver.v1.types.Entity;
+
 /**
  * @author Rogelio J. Baucells
  */
@@ -44,4 +46,6 @@ public interface Neo4JElementIdProvider<T> {
      * @return The {@link Neo4JElement} identifier converted to the correct type if necessary.
      */
     T processIdentifier(Object id);
+    
+    T processIdentifier(Entity element, Object id);
 }

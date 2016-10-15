@@ -153,7 +153,7 @@ public class Neo4JEdge extends Neo4JElement implements Edge {
         this.session = session;
         this.idFieldName = provider.idFieldName();
         // from relationship
-        this.id = provider.processIdentifier(relationship.get(idFieldName).asObject());
+        this.id = provider.processIdentifier(relationship, relationship.get(idFieldName).asObject());
         this.label = relationship.type();
         // copy properties from relationship, remove idFieldName from map
         StreamSupport.stream(relationship.keys().spliterator(), false).filter(key -> idFieldName.compareTo(key) != 0).forEach(key -> {

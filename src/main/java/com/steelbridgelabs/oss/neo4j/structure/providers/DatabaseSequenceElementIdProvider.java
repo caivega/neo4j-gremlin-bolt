@@ -25,6 +25,7 @@ import org.neo4j.driver.v1.Session;
 import org.neo4j.driver.v1.Statement;
 import org.neo4j.driver.v1.StatementResult;
 import org.neo4j.driver.v1.Transaction;
+import org.neo4j.driver.v1.types.Entity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -149,6 +150,12 @@ public class DatabaseSequenceElementIdProvider implements Neo4JElementIdProvider
         // return identifier
         return identifier;
     }
+    
+    @Override
+	public Long processIdentifier(Entity element, Object id) {
+		Objects.requireNonNull(element, "Element cannot be null");
+		return this.processIdentifier(element.id());
+	}
 
     /**
      * Process the given identifier converting it to the correct type if necessary.
